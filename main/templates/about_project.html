@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-2">
+        <h1>Opis Projektu</h1>
+        <p class="lead">Pierwszy projekt aplikacji webowej z wykorzystaniem framework-a <b>Django</b>, wykorzystując technologie:</p>
+        <ul>
+            <li>Python</li>
+            <li>HTML 5</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>Bootstrap 5.2.3</li>
+        </ul>
+        <br />
+
+        <h2><b>Założenia</b></h2>
+        <ul>
+            <li>Aplikacja organizująca pracę klubu sportowego</li>
+            <li>Obsługa klienta: Sprzedaż oraz weryfikacja karnetów</li>
+            <li>Wydawanie kluczyków do szafek</li>
+            <li>Zbieranie statystyk o klientach</li>
+        </ul>
+
+        <br>
+
+        <h2><b>Aktualne funkcjonalności</b></h2>
+        <ul>
+            <li>Start projektu: 29.12.2022</li>
+<!--            <li>Logowanie do gotowej bazy MySQL: 27.09.2022</li>-->
+<!--            <li>Dodawanie nowych osób do bazy danych: 28.09.2022</li>-->
+<!--            <li>Lista osób trenujących: 29.09.2022</li>-->
+<!--            <li>"Id finder": 29.09.2022</li>-->
+<!--            <li>Aktualizacja Bootstrapa v5.2.1 (Poprzednia wersja v3.0.0) : 30.09.2022</li>-->
+<!--            <li>"Id finder" Bootstrap modal information:  05.10.2022</li>-->
+<!--            <li>Dodawanie osób powiadomienia - Bootstrap toast notification: 15.10.2022</li>-->
+<!--            <li>Sprzedaż oraz sprawdzanie karnetów: 16.10.2022</li>-->
+        </ul>
+
+        <br>
+
+        <h2><b>Planowane funkcjonalności/pracę </b></h2>
+        <ul>
+            <li><b>Obsługa klienta</b></li>
+            <ul>
+                <li>Sprzedaż innych produktów</li>
+                <li>Sprzedaż karnetów - powiadomienia</li>
+                <li>Sprzedaż karnetów - wiele karnetów (zniżki rodzinne itd)</li>
+            </ul>
+
+            <br>
+
+            <li><b>Baza Danych</b></li>
+            <ul>
+                <li>Inicjowanie bazy danych przy logowania</li>
+                <li>Poprawianie danych w bazie</li>
+                <li>Usuwanie osoby z bazy</li>
+            </ul>
+
+            <br>
+
+            <li><b>Statystyki</b></li>
+            <ul>
+                <li>Eksport excela z danymi statystycznymi</li>
+                <li>Eskport JSON, txt, csv</li>
+            </ul>
+
+            <br>
+
+            <li><b>FrontEnd</b></li>
+            <ul>
+                <li>Pasek nawigacji z boku do konkretnych rozdziałów tej strony</li>
+                <li>Okno modalne mówiące o zalogowaniu i wylogowaniu: Zmodyfikować żeby było bardziej atrkcyjne dla użytkownika</li>
+                <li>Rozbudować profil użytkownika</li>
+                <li>Menu w bazie, obsłudze itd -> podświetlony przycisk obecnie wybranej opcji/strony</li>
+                <li>Rozsunąć Okna menu na górze oraz dodać opcje drop down-ów np. do Obsługi klienta, bazy, statystyk itd</li>
+                <li>Rozbudować o drop downy tą stronę oraz rozbudować stronę O mnie -> Wizytówka</li>
+                <li>Dodać bootstrap:Nested nav do całego pliku "o projekcie"</li>
+            </ul>
+
+            <br>
+
+            <li><b>BackEnd</b></li>
+            <ul>
+                <li>Sprecyzowanie błędów przy try & except</li>
+                <li>Database logi w terminalu</li>
+                <li>Logi z konkretnymi błędami</li>
+                <li>Jak debugować ?</li>
+                <li>Znaki z UTF-8 w plikach Pythona projektu</li>
+                <li>Zacząć używać hashowania hasła</li>
+                <li>Dodać różne konta użytkowników (Pracownik: Recepcja, Zarządca itd (Różne poziomy dostępu)) (Tworzenie kont z weryfikacją maila) (Hashowanie haseł)</li>
+                <li>Dodać możliwość zdjęcia profilowego itp.</li>
+                <li>Spróbować zainicjować bazę MySQL z tego skryptu</li>
+                <li>Dodać "stackowanie się" powiadomień, ustalić jak zostawiać powiadomienia tak żeby nie znikały przy ponownym renderowaniu</li>
+                <li>Ulepszy Listę osób dodając też odniesienia do zawodników które będą nas przekierowywać na statystyki danego zawodnika</li>
+
+            </ul>
+
+        </ul>
+
+
+        <br />
+        <h2><b>Masz jakiś pomysł na rozwinięcie aplikacji ? </b></h2>
+        <p>Koniecznie napisz na <a href="mailto:tomasz.meczkowski@gmail.com">tomasz.meczkowski@gmail.com</a></p>
+    </div>
+</div>
+
+
+{% endblock %}

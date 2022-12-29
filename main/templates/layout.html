@@ -21,32 +21,32 @@
     <div>
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">BJJ Club</a>
+                <a class="navbar-brand" href="{% url 'main:index' %}">BJJ Club</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="{% url 'main:index' %}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">O mnie</a>
+                            <a class="nav-link active" aria-current="page" href="{% url 'main:about' %}">O mnie</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Kontakt</a>
+                            <a class="nav-link active" aria-current="page" href="{% url 'main:contact' %}">Kontakt</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Obsług klienta</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Baza danych</a>
+                            <a class="nav-link active" aria-current="page" href="{% url 'players:players_list' %}">Zawodnicy</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Statystyki</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">O projekcie</a>
+                            <a class="nav-link active" aria-current="page" href="{% url 'main:about_project' %}">O projekcie</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Konto</a>
