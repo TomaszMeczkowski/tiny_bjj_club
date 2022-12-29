@@ -1,0 +1,148 @@
+a.custom {
+    width: 200px;
+    border: 2px solid black;
+    background-color: white; /*Kolor t³a bezczynnego przycisku*/
+    border-color: #04AA6D; 
+    color: green; /*Kolor tekstu*/
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition-duration: 0.4s;
+    display: inline-block; /*Bez tego nie bêdzie dzia³a³o 'width'*/
+    text-align: center;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+a.custom:hover{
+    background-color: #04AA6D; /*Kolor t³a najechanego przycisku*/ 
+    color: white; /*Zmiana koloru tekstu ¿eby siê nie zlewa³*/
+}
+
+a.custom-grey {
+    width: 200px;
+    border: 2px solid black;
+    background-color: white;
+    border-color: rgb(112, 112, 112);
+    color: rgb(112, 112, 112);
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition-duration: 0.4s;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+    a.custom-grey:hover {
+        background-color: rgb(112, 112, 112);
+        color: white;
+    }
+
+
+button.custom-blue {
+    width: 200px;
+    border: 2px solid black;
+    background-color: white;
+    /*Kolor t³a bezczynnego przycisku*/
+    border-color: rgb(13, 110, 253);
+    color: rgb(13, 110, 253);
+    /*Kolor tekstu*/
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition-duration: 0.4s;
+    display: inline-block;
+    /*Bez tego nie bêdzie dzia³a³o 'width'*/
+    text-align: center;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+button.custom-blue:hover {
+        background-color: rgb(13, 110, 253);
+        /*Kolor t³a najechanego przycisku*/
+        color: white;
+        /*Zmiana koloru tekstu ¿eby siê nie zlewa³*/
+    }
+
+button.custom-purple {
+    width: 200px;
+    border: 2px solid black;
+    background-color: white;
+    /*Kolor t³a bezczynnego przycisku*/
+    border-color: rgb(138, 14, 221);
+    color: rgb(138, 14, 221);
+    /*Kolor tekstu*/
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition-duration: 0.4s;
+    display: inline-block;
+    /*Bez tego nie bêdzie dzia³a³o 'width'*/
+    text-align: center;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+button.custom-purple:hover {
+        background-color: rgb(138, 14, 221);
+        /*Kolor t³a najechanego przycisku*/
+        color: white;
+        /*Zmiana koloru tekstu ¿eby siê nie zlewa³*/
+    }
+
+button.custom-grey {
+    width: 200px;
+    border: 2px solid black;
+    background-color: white;
+    /*Kolor t³a bezczynnego przycisku*/
+    border-color: rgb(112, 112, 112);
+    color: rgb(112, 112, 112);
+    /*Kolor tekstu*/
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition-duration: 0.4s;
+    display: inline-block;
+    /*Bez tego nie bêdzie dzia³a³o 'width'*/
+    text-align: center;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+button.custom-grey:hover {
+        background-color: rgb(112, 112, 112);
+        /*Kolor t³a najechanego przycisku*/
+        color: white;
+        /*Zmiana koloru tekstu ¿eby siê nie zlewa³*/
+    }r: white; /*Zmiana koloru tekstu ¿eby siê nie zlewa³*/
+    }
+
+
+div.custom {
+    margin: auto;
+    width: 30%; /*Note: Center aligning has no effect if the width property is not set (or set to 100%).*/
+    border: 3px solid green;
+    padding: 10px;
+    text-align: center;
+    color: green;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+tr.custom:nth-child(even) {
+    background-color: #e5e5e5;
+    border: 2px solid black;
+}
+
+td.custom {
+    padding: 8px;
+    border: 2px solid black;
+}
+
+th.custom {
+    border: 2px solid black;
+}
