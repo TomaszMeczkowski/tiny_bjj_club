@@ -23,7 +23,7 @@ class Player(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     belt = models.CharField(max_length=30, choices=Belts.choices, default=Belts.WHITE)
-    stripes = models.CharField(max_length=1, choices=Stripes.choices, default=Stripes.ZERO)
+    stripe = models.CharField(max_length=1, choices=Stripes.choices, default=Stripes.ZERO)
 
     def __str__(self):
         return f"{self.id}. {self.first_name} {self.last_name}"

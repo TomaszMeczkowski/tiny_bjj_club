@@ -4,28 +4,30 @@
 
 <!--<h2 style="margin: auto; width: 70%; margin-bottom: 15px;">{{ title }}</h2>-->
 
-<div class="p-5 mb-4 bg-light rounded-3" style="margin: auto; width: 70%;">
+<div class="p-5 mb-4 bg-light rounded-3" style="margin: auto; width: 99%;">
     <div class="container-fluid py-2" style="text-align: center;">
+        <h2 style="margin-bottom: 50px;">Zawodnicy</h2>
+        <hr style="margin-bottom: 50px;">
 
         <!-- Stałe boczne menu w zakładce bazy danych -->
 
         <div class="row">
-            <div class="col-sm-4">
-                <div class="row" style="margin-bottom: 5px;">
-                    <a class="custom" href="#" role="button">Dodaj nową osobę</a>
+            <div class="col-sm-2" style="margin-top: 25px;">
+                <div class="row" style="margin-bottom: 5px">
+                    <a href="{% url 'players:players_add' %}" class="btn btn-outline-success">Dodaj osobę</a>
                 </div>
-                <div class="row" style="margin-bottom: 5px;">
-                    <a class="custom" href="#" role="button">Popraw dane</a>
+                <div class="row" style="margin-bottom: 5px">
+                    <a href="#" class="btn btn-outline-success">Popraw dane</a>
                 </div>
-                <div class="row" style="margin-bottom: 5px;">
-                    <a class="custom" href="{% url 'players:players_list' %}" role="button">Pokaż wszystkich</a>
+                <div class="row" style="margin-bottom: 5px">
+                    <a href="{% url 'players:players_list' %}" class="btn btn-outline-success">Lista</a>
                 </div>
-                <div class="row" style="margin-bottom: 5px;">
-                    <a class="custom" href="#" role="button">Usuń dane</a>
+                <div class="row" style="margin-bottom: 5px">
+                    <a href="#" class="btn btn-outline-success">Usuń</a>
                 </div>
             </div>
 
-            <div class="col-sm-6 offset-1">
+            <div class="col-sm-6 offset-2">
 
                 {% block body %}{% endblock %}
             

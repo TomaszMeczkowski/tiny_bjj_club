@@ -6,19 +6,29 @@ from .models import Player
 
 
 def players(request):
-
     players_raw = Player.objects.all()
     players = []
 
-    for player in players_raw:
-        row = [player.id, player.first_name, player.last_name, player.belt, player.stripes]
-        players.append(row)
+    # for i in enumerate(players_raw):
+    #     players.append(players_raw[i])
+
+    for i in range(len(players_raw)):
+        players.append(players_raw[i])
+
+    context = {"headings": ["Id", "Imie i Nazwisko", "Pas", "Belki"],
+               "players": players,
+               }
+
+    return render(request, "players_list.html", context)
 
 
-
-    context = {"headings": ["Id", "Imie", "Nazwisko", "Pas", "Belki"],
-               "data": players,
-
+def players_add(request):
+    context = {"message": "",
 
                }
-    return render(request, "players_list.html", context)
+    return render(request, "players_add.html", context)
+
+
+def players_test(request):
+    context = {}
+    return render(request, "test/test_player_table.html", context)

@@ -1,0 +1,81 @@
+{% extends "inner_layout.html" %}
+
+{% block body %}
+
+    <h3>Dodawanie nowej osoby</h3>
+    <div style="margin: auto; width: 80%;">
+        <form method="post">
+
+            <div style="margin: auto; width: 80%; margin-top: 25px;">
+                <input type="text" name="name" id="name" class="form-control" placeholder="Imię...">
+            </div>
+
+            <div style="margin: auto; width: 80%; margin-top: 25px;">
+                <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Nazwisko...">
+            </div>
+
+            <div style="margin: auto; width: 80%; margin-top: 25px;">
+                <select name="pas" id="pas" class="form-select">
+                    <option selected>Pas</option>
+                    <option value="Biały">Biały</option>
+                    <option value="Niebieski">Niebieski</option>
+                    <option value="Purpurowy">Purpurowy</option>
+                    <option value="Brązowy">Brązowy</option>
+                    <option value="Czarny">Czarny</option>
+                </select>
+
+            </div>
+
+            <div style="margin: auto; width: 80%; margin-top: 25px;">
+                <select name="belki" id="belki" class="form-select">
+                    <option selected>Belki</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+
+            <button type="submit" class="custom-blue" style="width: 60%; margin-top: 35px;">Dodaj</button>
+
+        </form>
+
+        {% if message != "" %}
+
+        <script>
+        $(document).ready(function() {
+            $("#adding_people_toast").toast('show');
+        });
+        </script>
+
+
+        <div style="position: absolute; bottom: 20px; right: 20px;">
+            <div id="adding_people_toast" class="toast" role="status" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+                <div class="toast-header">
+
+                    <img src="/static/images/activity.svg" alt="Image not found">
+
+                    <strong class="me-auto">BJJ CLUB</strong>
+                    <small style="padding-right: 20px;">1 min temu</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+
+                    {% if message == "added" %}
+                    <b>.....</b> został/a dodany/a do bazy
+                    {% endif %}
+
+                    {% if message == "error" %}
+                    <b style="color: red;">*Błąd*</b> : Użytkownik już znajduję sie bazie
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+
+        {% endif %}
+
+    </div>
+
+{% endblock %}
