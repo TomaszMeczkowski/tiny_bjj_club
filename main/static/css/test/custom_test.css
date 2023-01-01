@@ -1,0 +1,7 @@
+a.link_custom{
+    text-decoration: none;
+}
+
+a.link_custom:hover{
+    text-decoration: underline;
+}
