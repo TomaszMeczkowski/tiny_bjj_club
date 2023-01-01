@@ -20,10 +20,20 @@ class Player(models.Model):
         THREE = "3", "3"
         FOUR = "4", "4"
 
+    class Gender(models.TextChoices):
+        Male = "Mężczyzna", "Mężczyzna"
+        Female = "Kobieta", "Kobieta"
+
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     belt = models.CharField(max_length=30, choices=Belts.choices, default=Belts.WHITE)
     stripe = models.CharField(max_length=1, choices=Stripes.choices, default=Stripes.ZERO)
+    gender = models.CharField(max_length=10, choices=Gender.choices, default=Gender.Male, blank=True)
+    birth_date = models.DateField(blank=True, null=True)
+    first_training = models.DateField(blank=True, null=True)
+    last_training = models.DateField(blank=True, null=True)
+    player_created = models.DateTimeField(auto_now_add=True)
+    player_modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f"{self.id}. {self.first_name} {self.last_name}"

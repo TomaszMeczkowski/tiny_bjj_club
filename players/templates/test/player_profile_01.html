@@ -22,12 +22,20 @@
             <div class="card mb-4 mb-xl-0">
                 <div class="card-header">{{player.first_name}} {{player.last_name}}</div>
                 <div class="card-body text-center">
+
                     <!-- Profile picture image-->
+                    {% if player.gender == 'Mężczyzna'%}
                     <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-<!--                    Profile belt image-->
+                    {% else %}
+                    <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar8.png" alt="">
+                    {% endif %}
+
+                    <!-- Profile belt image-->
                     <img src= {% belt_png player.belt player.stripe %} alt=" " style="width: 100px; margin-left: 10px;"/>
+
                     <!-- Profile picture help block-->
                     <div class="small font-italic text-muted mb-4">Pas: {{player.belt}}, {{player.stripe}} belki</div>
+
                     <!-- Profile picture upload button-->
                     <button class="btn btn-primary" type="button">Dodaj nowe zdjęcie</button>
                 </div>
@@ -56,11 +64,11 @@
                         <div class="row gx-3 mb-3">
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputFirstVisit">Pierwszy trening</label>
-                                <input class="form-control" id="inputFirstVisit" type="text" placeholder="Enter your first training" value="06/10/1988xxxx">
+                                <input class="form-control" id="inputFirstVisit" type="text" placeholder="Enter your first training" value="xx/xx/xxxx">
                             </div>
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputLastVisit">Ostatni trening</label>
-                                <input class="form-control" id="inputLastVisit" type="text" placeholder="Enter your last training" value="06/10/1988xxxx">
+                                <input class="form-control" id="inputLastVisit" type="text" placeholder="Enter your last training" value="xx/xx/xxxx">
                             </div>
                         </div>
                         <!-- Form Row-->
@@ -84,12 +92,24 @@
                             </div>
                             <!-- Form Group (birthday)-->
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
+                                <label class="small mb-1" for="inputBirthday">Płeć</label>
+                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="{{player.gender}}">
+                            </div>
+                        </div>
+
+                        <!-- Form Group (birthday)-->
+                        <div class="row gx-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputFirstVisit">Utworzono</label>
+                                <input class="form-control" id="inputFirstVisit" type="text" placeholder="Enter your first training" value="{{player.player_created | date:'m/d/Y  h:m:s'}}">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLastVisit">Ostatnia zmiana</label>
+                                <input class="form-control" id="inputLastVisit" type="text" placeholder="Enter your last training" value="{{player.player_modified | date:'m/d/Y  h:m:s'}}">
                             </div>
                         </div>
                         <!-- Save changes button-->
-                        <button class="btn btn-primary" type="button">Save changes</button>
+                        <button class="btn btn-primary" type="button">Zapisz zmiany</button>
                     </form>
                 </div>
             </div>

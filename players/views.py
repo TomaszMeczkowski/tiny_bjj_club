@@ -38,7 +38,7 @@ def players_test(request):
     return render(request, "test/test_player_table.html", context)
 
 
-def player_profile(request):
-    player = Player.objects.first()
+def player_profile(request, player_id):
+    player = Player.objects.get(pk=player_id)
     context = {"player": player}
     return render(request, "test/player_profile_01.html", context)
