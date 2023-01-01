@@ -24,11 +24,21 @@ def players(request):
 
 def players_add(request):
     context = {"message": "",
-
                }
     return render(request, "players_add.html", context)
 
 
 def players_test(request):
-    context = {}
+    players = Player.objects.all()
+    count_players = len(players)
+
+    context = {"count_players": count_players,
+               "players": players,
+               }
     return render(request, "test/test_player_table.html", context)
+
+
+def player_profile(request):
+    player = Player.objects.first()
+    context = {"player": player}
+    return render(request, "test/player_profile_01.html", context)
