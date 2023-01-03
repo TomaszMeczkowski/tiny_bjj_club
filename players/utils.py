@@ -19,6 +19,8 @@ def create_fake_players(n=1):
                 stripe=randint(0, 4),
                 gender="Mężczyzna",
                 birth_date=fake.date_of_birth(),
+                email=fake.free_email(),
+                active=randint(0, 1),
             )
             player.save()
 
@@ -30,6 +32,8 @@ def create_fake_players(n=1):
                 stripe=randint(0, 4),
                 gender="Kobieta",
                 birth_date=fake.date_of_birth(),
+                email=fake.free_email(),
+                active=randint(0, 1)
             )
             player.save()
 

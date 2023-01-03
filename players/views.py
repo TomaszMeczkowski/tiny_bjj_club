@@ -1,24 +1,42 @@
 from django.shortcuts import render
 from .models import Player
+from itertools import chain
+from django.db.models.query import EmptyQuerySet
 
 
 # Create your views here.
 
 
 def players(request):
-    players_raw = Player.objects.all()
-    players = []
+    players = Player.objects.all()
 
-    # for i in enumerate(players_raw):
-    #     players.append(players_raw[i])
+    # Very bad idea but working for some cases (work it out later)
+    first_names = []
+    last_names = []
+    for i in players:
+        first_names.append(i.first_name)
+        last_names.append(i.last_name)
 
-    for i in range(len(players_raw)):
-        players.append(players_raw[i])
+    if request.method == "POST":
+        search_bar = request.POST.get("searchbar").capitalize()
 
-    context = {"headings": ["Id", "Imie i Nazwisko", "Pas", "Belki"],
+        if search_bar in ['Biały', "Niebieski", "Purpurowy", "Brązowy", "Czarny"]:
+            players = players.filter(belt=search_bar)
+
+        elif search_bar in first_names:
+            players = players.filter(first_name=search_bar)
+
+        elif search_bar in last_names:
+            players = players.filter(last_name=search_bar)
+
+        # Case for zero output search
+        elif search_bar != "":
+            players = players.filter(first_name=search_bar)
+
+    count_players = len(players)
+    context = {"count_players": count_players,
                "players": players,
                }
-
     return render(request, "players_list.html", context)
 
 
@@ -28,17 +46,7 @@ def players_add(request):
     return render(request, "players_add.html", context)
 
 
-def players_test(request):
-    players = Player.objects.all()
-    count_players = len(players)
-
-    context = {"count_players": count_players,
-               "players": players,
-               }
-    return render(request, "test/test_player_table.html", context)
-
-
 def player_profile(request, player_id):
     player = Player.objects.get(pk=player_id)
     context = {"player": player}
-    return render(request, "test/player_profile_01.html", context)
+    return render(request, "player_profile.html", context)
