@@ -4,7 +4,7 @@
 {% load extras %}
 
 <!--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">-->
-<link rel="stylesheet" type="text/css" href="/static/css/test/test_profile.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/player_profile.css" />
 
 <div class="container-xl px-4 mt-4">
     <!-- Account page navigation-->
@@ -78,36 +78,36 @@
                                 <label class="small mb-1" for="inputPhone">Numer telefonu</label>
                                 <input class="form-control" id="inputPhone" type="tel" placeholder="Brak" value="">
                             </div>
-                            <!-- Form Group (birthday)-->
+                            <!-- Form Group (email)-->
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputBirthday">E-mail</label>
-                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Brak" value="{% email_display player.id %}">
+                                <label class="small mb-1" for="inputEmail">E-mail</label>
+                                <input class="form-control" id="inputEmail" type="text" name="birthday" placeholder="Brak" value="{% email_display player.id %}">
                             </div>
                         </div>
                         <div class="row gx-3 mb-3">
-                            <!-- Form Group (phone number)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputPhone">Rok urodzenia</label>
-                                <input class="form-control" id="inputPhone" type="tel" placeholder="Brak" value="{{player.birth_date | date:'d/m/Y'}}">
-                            </div>
                             <!-- Form Group (birthday)-->
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputBirthday">Płeć</label>
-                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="{{player.gender}}">
+                                <label class="small mb-1" for="inputBirthday">Rok urodzenia</label>
+                                <input class="form-control" id="inputBirthday" type="tel" placeholder="Brak" value="{{player.birth_date | date:'d/m/Y'}}">
+                            </div>
+                            <!-- Form Group (gender)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputGender">Płeć</label>
+                                <input class="form-control" id="inputGender" type="text" name="birthday" placeholder="Enter your birthday" value="{{player.gender}}">
                             </div>
                         </div>
 
-                        <!-- Form Group (birthday)-->
+                        <!-- Form Group (created/modified date)-->
                         <div class="row gx-3 mb-3">
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputFirstVisit">Utworzono</label>
+                                <label class="small mb-1" for="inputCreated">Utworzono</label>
 
-                                <input class="form-control" id="inputFirstVisit" type="text" placeholder=""
+                                <input class="form-control" id="inputCreated" type="text" placeholder=""
                                        value="{{player.created | date:'m/d/Y  G:i:s'}}">
                             </div>
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputLastVisit">Ostatnia zmiana</label>
-                                <input class="form-control" id="inputLastVisit" type="text" placeholder=""
+                                <label class="small mb-1" for="inputLastChange">Ostatnia zmiana</label>
+                                <input class="form-control" id="inputLastChange" type="text" placeholder=""
                                        value="{{player.modified | date:'m/d/Y  G:i:s'}}">
                             </div>
                         </div>
