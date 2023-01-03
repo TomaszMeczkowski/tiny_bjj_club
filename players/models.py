@@ -32,8 +32,9 @@ class Player(models.Model):
     birth_date = models.DateField(blank=True, null=True)
     first_training = models.DateField(blank=True, null=True)
     last_training = models.DateField(blank=True, null=True)
-    player_created = models.DateTimeField(auto_now_add=True)
-    player_modified = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+    email = models.EmailField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.id}. {self.first_name} {self.last_name}"

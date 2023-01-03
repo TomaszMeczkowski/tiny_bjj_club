@@ -76,19 +76,19 @@
                             <!-- Form Group (phone number)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputPhone">Numer telefonu</label>
-                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="555-123-4567">
+                                <input class="form-control" id="inputPhone" type="tel" placeholder="Brak" value="">
                             </div>
                             <!-- Form Group (birthday)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputBirthday">E-mail</label>
-                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="example@com">
+                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Brak" value="{% email_display player.id %}">
                             </div>
                         </div>
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (phone number)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputPhone">Rok urodzenia</label>
-                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="06/10/1988">
+                                <input class="form-control" id="inputPhone" type="tel" placeholder="Brak" value="{{player.birth_date | date:'d/m/Y'}}">
                             </div>
                             <!-- Form Group (birthday)-->
                             <div class="col-md-6">
@@ -102,18 +102,15 @@
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputFirstVisit">Utworzono</label>
 
-                                <input class="form-control" id="inputFirstVisit" type="text" placeholder="Enter your first training"
-                                       value="{{player.player_created | date:'m/d/Y  h:m:s'}}">
+                                <input class="form-control" id="inputFirstVisit" type="text" placeholder=""
+                                       value="{{player.created | date:'m/d/Y  G:i:s'}}">
                             </div>
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputLastVisit">Ostatnia zmiana</label>
-                                <input class="form-control" id="inputLastVisit" type="text" placeholder="Enter your last training"
-                                       value="{{player.player_modified | date:'m/d/Y  h:m:s'}}">
+                                <input class="form-control" id="inputLastVisit" type="text" placeholder=""
+                                       value="{{player.modified | date:'m/d/Y  G:i:s'}}">
                             </div>
                         </div>
-
-                        <!-- Moduł testowy strefy czasowej-->
-                        <p>{% time_zone_display_test player.id %}</p>
 
                         <!-- Save changes button-->
                         <button class="btn btn-primary" type="button">Zapisz zmiany</button>
