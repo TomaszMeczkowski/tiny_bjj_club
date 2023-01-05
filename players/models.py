@@ -37,5 +37,8 @@ class Player(models.Model):
     email = models.EmailField(null=True, blank=True)
     active = models.BooleanField(default=False)
 
+    class Meta:
+        ordering = ['id']
+
     def __str__(self):
         return f"{self.id}. {self.first_name} {self.last_name}"

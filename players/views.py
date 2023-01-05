@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from .models import Player
-from itertools import chain
-from django.db.models.query import EmptyQuerySet
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -33,7 +32,11 @@ def players(request):
         elif search_bar != "":
             players = players.filter(first_name=search_bar)
 
-    count_players = len(players)
+    players = Paginator(players, 10)
+    count_players = players.count
+    current_page = request.GET.get('page')
+    players = players.get_page(current_page)
+
     context = {"count_players": count_players,
                "players": players,
                }
