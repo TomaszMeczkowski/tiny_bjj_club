@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Player
 from django.core.paginator import Paginator
+from datetime import datetime
 
 
 # Create your views here.
@@ -32,7 +33,7 @@ def players(request):
         elif search_bar != "":
             players = players.filter(first_name=search_bar)
 
-    players = Paginator(players, 10)
+    players = Paginator(players, 20)
     count_players = players.count
     current_page = request.GET.get('page')
     players = players.get_page(current_page)
@@ -44,7 +45,21 @@ def players(request):
 
 
 def players_add(request):
-    context = {"message": "",
+    mess = ""
+    time_now = datetime.now()
+    status = None
+
+    if request.method == "POST":
+        first_name = request.POST.get("first_name").capitalize()
+        last_name = request.POST.get("last_name").capitalize()
+        belt = request.POST.get("belt").capitalize()
+        stripe = request.POST.get("stripe").capitalize()
+        mess = f"{first_name} {last_name}"
+        status = "added"
+
+    context = {"message": mess,
+               "status": status,
+               "time_now": time_now,
                }
     return render(request, "players_add.html", context)
 
@@ -53,3 +68,9 @@ def player_profile(request, player_id):
     player = Player.objects.get(pk=player_id)
     context = {"player": player}
     return render(request, "player_profile.html", context)
+
+
+def player_profile_biling(request, player_id):
+    player = Player.objects.get(pk=player_id)
+    context = {"player": player}
+    return render(request, "player_profile_biling.html", context)
