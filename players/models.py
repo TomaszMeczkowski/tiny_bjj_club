@@ -44,7 +44,8 @@ class Player(models.Model):
     modified = models.DateTimeField(auto_now=True)
     email = models.EmailField(null=True, blank=True)
     active = models.BooleanField(default=False)
-    subscription_type = models.CharField(max_length=20, choices=SubscriptionType, default=None, null=True, blank=True)
+    subscription_type = models.CharField(max_length=30, choices=SubscriptionType.choices, default=SubscriptionType.ONE,
+                                         blank=True)
 
     class Meta:
         ordering = ['id']
