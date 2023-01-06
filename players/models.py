@@ -24,6 +24,14 @@ class Player(models.Model):
         Male = "Mężczyzna", "Mężczyzna"
         Female = "Kobieta", "Kobieta"
 
+    class SubscriptionType(models.TextChoices):
+        ONE = "1 Wejście", "1 Wejście"
+        FOUR = "4 Wejścia", "4 Wejścia"
+        EIGHT = "8 Wejść", "8 Wejść"
+        FIFTEEN = "15 Wejść", "15 Wejść"
+        OPEN = "OPEN", "OPEN"
+        KIDS = "Dzieci i młodzież", "Dzieci i młodzież"
+
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     belt = models.CharField(max_length=30, choices=Belts.choices, default=Belts.WHITE)
@@ -36,6 +44,7 @@ class Player(models.Model):
     modified = models.DateTimeField(auto_now=True)
     email = models.EmailField(null=True, blank=True)
     active = models.BooleanField(default=False)
+    subscription_type = models.CharField(max_length=20, choices=SubscriptionType, default=None, null=True, blank=True)
 
     class Meta:
         ordering = ['id']
