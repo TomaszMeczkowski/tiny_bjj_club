@@ -9,11 +9,10 @@
 <div class="container-xl px-4 mt-4">
     <!-- Account page navigation-->
     <nav class="nav nav-borders">
-        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Profil</a>
-        <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-profile-billing-page" target="__blank">Płatności</a>
-        <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-profile-security-page" target="__blank">Bezpieczeństwo</a>
-        <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-edit-notifications-page"  target="__blank">Powiadomienia</a>
-        <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-edit-notifications-page"  target="__blank">Ankiety</a>
+        <a class="nav-link active ms-0" href="{% url 'players:player_profile' player.id %}">Profil</a>
+        <a class="nav-link" href="{% url 'players:player_profile_biling' player.id %}">Płatności</a>
+        <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-profile-security-page">Bezpieczeństwo</a>
+        <a class="nav-link" href="#"  target="__blank">Ankiety</a>
     </nav>
     <hr class="mt-0 mb-4">
     <div class="row">
