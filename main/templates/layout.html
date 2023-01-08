@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tiny BJJ Club</title>
 
-    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.rtl.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/css/site.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/css/custom.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="/static/scripts/jquery-3.4.1.min.js"></script>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.rtl.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/site.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}"/>
+  <script src="{% static 'scripts/chart.js' %}"></script>
+  <script src="{% static 'scripts/jquery-3.4.1.min.js' %}"></script>
 
 </head>
-
 <body>
-
     <div>
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
             <div class="container-fluid">
@@ -49,29 +48,8 @@
                         <li class="nav-item">
                             <a class="nav-link disable" aria-disabled="true" aria-current="page" href="#">Konto</a>
                         </li>
-
-
-<!--                        <li class="nav-item dropdown">-->
-<!--                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
-<!--                                Example Dropdown-->
-<!--                            </a>-->
-<!--                            <ul class="dropdown-menu">-->
-<!--                                <li><a class="dropdown-item" href="#">Action</a></li>-->
-<!--                                <li><a class="dropdown-item" href="#">Another action</a></li>-->
-<!--                                <li>-->
-<!--                                    <hr class="dropdown-divider">-->
-<!--                                </li>-->
-<!--                                <li><a class="dropdown-item" href="#">Something else here</a></li>-->
-<!--                            </ul>-->
-<!--                        </li>-->
-
-
-
                     </ul>
-<!--                    <form class="d-flex" role="search">-->
-<!--                        <input class="form-control me-2" type="search" placeholder="Search #UNDER CONSTRUCTION" aria-label="Search" style="width: 300px;">-->
-<!--                        <button class="btn btn-outline-success" type="submit">Search</button>-->
-<!--                    </form>-->
+
                 </div>
             </div>
         </nav>
@@ -87,8 +65,8 @@
         </footer>
     </div>
 
-    <script src="/static/scripts/bootstrap.bundle.js"></script>
-    <script src="/static/scripts/Password_Visibility.js"></script>
+    <script src="{% static 'scripts/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'scripts/Password_Visibility.js' %}"></script>
 
     {% block scripts %}{% endblock %}
 

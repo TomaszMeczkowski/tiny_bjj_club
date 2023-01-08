@@ -46,6 +46,8 @@ class Player(models.Model):
     active = models.BooleanField(default=False)
     subscription_type = models.CharField(max_length=30, choices=SubscriptionType.choices, default=SubscriptionType.ONE,
                                          blank=True)
+    phone_number = models.CharField(max_length=20, blank=True)
+
 
     class Meta:
         ordering = ['id']

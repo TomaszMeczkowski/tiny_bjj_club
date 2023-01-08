@@ -1,7 +1,9 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<link rel="stylesheet" type="text/css" href="/static/css/player_list_2.css" />
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/player_list_2.css' %}" />
 
 
 <div class="p-5 mb-4 bg-light rounded-3">
@@ -10,7 +12,9 @@
         <p style="margin-top: 55px; font-size: 22px;"><b>Tomasz Męczkowski</b></p>
         <p style="font-size: 18px;">Początkujący Python backend developer</p>
 
-        <img src="/static/images/github.svg" alt="github icon" style="height: 40px;">
+
+<!--        <img src="/static/images/github.svg" alt="gitHub icon" style="height: 40px;">-->
+        <img src="{% static 'images/github.svg' %}" alt="github icon" style="height: 40px;">
         <a class="link_custom" href="https://github.com/TomaszMeczkowski" style="width: 120px;" target="_blank">GitHub</a>
 
         <h2 style="margin-top: 100px;">Python</h2>

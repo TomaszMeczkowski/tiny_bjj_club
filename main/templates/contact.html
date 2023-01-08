@@ -2,8 +2,8 @@
 
 {% block content %}
 
-
-<link rel="stylesheet" type="text/css" href="/static/css/player_list_2.css" />
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/player_list_2.css' %}" />
 
 <h2>{{ title }}</h2>
 <h3>{{ message }}</h3>
