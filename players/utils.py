@@ -21,6 +21,7 @@ def create_fake_players(n=1):
                 birth_date=fake.date_of_birth(),
                 email=fake.free_email(),
                 active=randint(0, 1),
+                phone_number=fake.phone_number()
             )
             player.save()
 
@@ -33,7 +34,8 @@ def create_fake_players(n=1):
                 gender="Kobieta",
                 birth_date=fake.date_of_birth(),
                 email=fake.free_email(),
-                active=randint(0, 1)
+                active=randint(0, 1),
+                phone_number=fake.phone_number()
             )
             player.save()
 
