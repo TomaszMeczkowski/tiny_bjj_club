@@ -1,6 +1,7 @@
 {% extends "inner_layout.html" %}
 
 {% block body %}
+{% load static %}
 
     <h3>Dodawanie nowej osoby</h3>
     <div style="margin: auto;">
@@ -8,16 +9,16 @@
         <form method="post">
             {% csrf_token %}
 
-            <div style="margin: auto; margin-top: 25px;">
-                <input type="text" name="first_name" id="first_name" class="form-control" placeholder="Imię...">
+            <div style="margin: 25px auto auto;">
+                <input type="text" name="first_name" id="first_name" class="form-control" placeholder="Imię..." aria-label="">
             </div>
 
-            <div style="margin: auto; margin-top: 25px;">
-                <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Nazwisko...">
+            <div style="margin: 25px auto auto;">
+                <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Nazwisko..." aria-label="">
             </div>
 
-            <div style="margin: auto; margin-top: 25px;">
-                <select name="belt" id="belt" class="form-select">
+            <div style="margin: 25px auto auto;">
+                <select name="belt" id="belt" class="form-select" aria-label="">
                     <option selected>Pas</option>
                     <option value="Biały">Biały</option>
                     <option value="Niebieski">Niebieski</option>
@@ -28,8 +29,8 @@
 
             </div>
 
-            <div style="margin: auto; margin-top: 25px;">
-                <select name="stripe" id="stripe" class="form-select">
+            <div style="margin: 25px auto auto;">
+                <select name="stripe" id="stripe" class="form-select" aria-label="">
                     <option selected>Belki</option>
                     <option value="0">0</option>
                     <option value="1">1</option>
@@ -56,7 +57,7 @@
         <div style="position: absolute; bottom: 20px; right: 20px;">
             <div id="adding_people_toast" class="toast" role="status" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
                 <div class="toast-header">
-                    <img src="/static/images/activity.svg" alt="Image not found">
+                    <img src="{% static 'images/activity.svg' %}" alt="Image not found">
                     <strong class="me-auto">BJJ CLUB</strong>
                     <small style="padding-right: 20px;">{{ time_now | time:"G:i:s" }}</small>
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -65,7 +66,7 @@
 
                     {% if status == "added" %}
                     <b> {{ message }} </b> został/a dodany/a do bazy
-                    <img src="/static/images/check-square-fill.svg" alt="" style="height: 20px; padding-left: 5px;">
+                    <img src="{% static 'images/check-square-fill.svg' %}" alt="" style="height: 20px; padding-left: 5px;">
                     {% endif %}
 
                     {% if status == "error" %}
