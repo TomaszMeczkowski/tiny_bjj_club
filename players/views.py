@@ -52,10 +52,19 @@ def players_add(request):
     if request.method == "POST":
         first_name = request.POST.get("first_name").capitalize()
         last_name = request.POST.get("last_name").capitalize()
-        belt = request.POST.get("belt").capitalize()
-        stripe = request.POST.get("stripe").capitalize()
+        belt = request.POST.get("belt")
+        stripe = request.POST.get("stripe")
+        gender = request.POST.get("gender")
         mess = f"{first_name} {last_name}"
         status = "added"
+
+        player = Player(first_name=first_name,
+                        last_name=last_name,
+                        belt=belt,
+                        stripe=stripe,
+                        gender="Mężczyzna",
+                        )
+        player.save()
 
     context = {"message": mess,
                "status": status,
