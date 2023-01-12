@@ -62,7 +62,7 @@ def players_add(request):
                         last_name=last_name,
                         belt=belt,
                         stripe=stripe,
-                        gender="Mężczyzna",
+                        gender=gender,
                         )
         player.save()
 
@@ -75,6 +75,19 @@ def players_add(request):
 
 def player_profile(request, player_id):
     player = Player.objects.get(pk=player_id)
+
+    if request.method == "POST":
+        first_name = request.POST.get("first_name").capitalize()
+        last_name = request.POST.get("last_name").capitalize()
+        gender = request.POST.get("gender")
+        print(first_name, last_name, gender)
+
+        player.first_name = first_name
+        player.last_name = last_name
+        player.gender = gender
+
+        player.save()
+
     context = {"player": player}
     return render(request, "player_profile.html", context)
 

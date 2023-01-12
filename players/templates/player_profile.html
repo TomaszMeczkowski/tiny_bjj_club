@@ -32,11 +32,20 @@
                     <!-- Profile belt image-->
                     <img src= "{% belt_png player.belt player.stripe %}" alt='' style="width: 100px; margin-left: 10px;"/>
 
-                    <!-- Profile picture help block-->
-                    <div class="small font-italic text-muted mb-4">Pas: {{player.belt}}, {{player.stripe}} belki</div>
+                    <!-- Profile belt text info-->
+                    <div class="small font-italic text-muted mb-2">Pas: {{player.belt}}, {{player.stripe}} belki</div>
+
+
+                    <div class="small font-italic text-muted mb-4">Status zawodnika:
+                        {% if player.active %}
+                            <b style="color: green">Aktywny</b>
+                        {% else %}
+                            <b style="color: red">Nieaktywny</b>
+                        {% endif %}
+                    </div>
 
                     <!-- Profile picture upload button-->
-                    <button class="btn btn-primary" type="button">Dodaj nowe zdjęcie</button>
+                    <button class="btn btn-outline-primary" type="button">Dodaj nowe zdjęcie</button>
                 </div>
             </div>
         </div>
@@ -45,18 +54,19 @@
             <div class="card mb-4">
                 <div class="card-header">Szczegóły</div>
                 <div class="card-body">
-                    <form>
+                    <form method="post">
+                        {% csrf_token %}
                         <!-- Form Row-->
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (first name)-->
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputFirstName">Imię</label>
-                                <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="{{player.first_name}}">
+                                <label class="small mb-1" for="first_name">Imię</label>
+                                <input class="form-control" id="first_name" name="first_name" type="text" placeholder="Enter your first name" value="{{player.first_name}}">
                             </div>
                             <!-- Form Group (last name)-->
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputLastName">Nazwisko</label>
-                                <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="{{ player.last_name }}">
+                                <label class="small mb-1" for="last_name">Nazwisko</label>
+                                <input class="form-control" id="last_name" name="last_name" type="text" placeholder="Enter your last name" value="{{ player.last_name }}">
                             </div>
                         </div>
                         <!-- Form Row        -->
@@ -74,25 +84,33 @@
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (phone number)-->
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputPhone">Numer telefonu</label>
-                                <input class="form-control" id="inputPhone" type="tel" placeholder="Brak" value="{{ player.phone_number }}">
+                                <label class="small mb-1" for="phone_number">Numer telefonu</label>
+                                <input class="form-control" id="phone_number" type="tel" placeholder="Brak" value="{{ player.phone_number }}">
                             </div>
                             <!-- Form Group (email)-->
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputEmail">E-mail</label>
-                                <input class="form-control" id="inputEmail" type="text" name="birthday" placeholder="Brak" value="{% email_display player.id %}">
+                                <label class="small mb-1" for="e_mail">E-mail</label>
+                                <input class="form-control" id="e_mail" type="text" name="e_mail" placeholder="Brak" value="{% email_display player.id %}">
                             </div>
                         </div>
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (birthday)-->
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputBirthday">Rok urodzenia</label>
-                                <input class="form-control" id="inputBirthday" type="tel" placeholder="Brak" value="{{player.birth_date | date:'d/m/Y'}}">
+                                <label class="small mb-1" for="birth_day">Rok urodzenia</label>
+                                <input class="form-control" id="birth_day" type="tel" placeholder="Brak" value="{{player.birth_date | date:'d/m/Y'}}">
                             </div>
                             <!-- Form Group (gender)-->
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputGender">Płeć</label>
-                                <input class="form-control" id="inputGender" type="text" name="birthday" placeholder="Enter your birthday" value="{{player.gender}}">
+                                <label class="small mb-1" for="gender">Płeć</label>
+                                <select class="form-select" id="gender" name="gender" aria-label="Płeć" style="height: 48px; color: grey">
+                                    {% if player.gender == "Mężczyzna" %}
+                                        <option selected>Mężczyzna</option>
+                                        <option value="Kobieta">Kobieta</option>
+                                    {% else %}
+                                        <option selected>Kobieta</option>
+                                        <option value="Mężczyzna">Mężczyzna</option>
+                                    {% endif %}
+                                </select>
                             </div>
                         </div>
 
@@ -100,7 +118,6 @@
                         <div class="row gx-3 mb-3">
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputCreated">Utworzono</label>
-
                                 <input class="form-control" id="inputCreated" type="text" placeholder=""
                                        value="{{player.created | date:'m/d/Y  G:i:s'}}">
                             </div>
@@ -112,7 +129,7 @@
                         </div>
 
                         <!-- Save changes button-->
-                        <button class="btn btn-primary" type="button">Zapisz zmiany</button>
+                        <button class="btn btn-outline-primary" type="submit">Zapisz zmiany</button>
                     </form>
                 </div>
             </div>
