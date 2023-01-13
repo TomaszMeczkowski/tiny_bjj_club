@@ -80,7 +80,6 @@ def player_profile(request, player_id):
         first_name = request.POST.get("first_name").capitalize()
         last_name = request.POST.get("last_name").capitalize()
         gender = request.POST.get("gender")
-        print(first_name, last_name, gender)
 
         player.first_name = first_name
         player.last_name = last_name

@@ -48,7 +48,6 @@ class Player(models.Model):
                                          blank=True)
     phone_number = models.CharField(max_length=20, blank=True)
 
-
     class Meta:
         ordering = ['id']
 

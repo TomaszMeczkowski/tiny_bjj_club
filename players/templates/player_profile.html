@@ -73,11 +73,11 @@
                         <div class="row gx-3 mb-3">
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputFirstVisit">Pierwszy trening</label>
-                                <input class="form-control" id="inputFirstVisit" type="text" placeholder="Enter your first training" value="xx/xx/xxxx">
+                                <input class="form-control" id="inputFirstVisit" type="text" placeholder="Enter your first training" value="xx/xx/xxxx" disabled readonly>
                             </div>
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputLastVisit">Ostatni trening</label>
-                                <input class="form-control" id="inputLastVisit" type="text" placeholder="Enter your last training" value="xx/xx/xxxx">
+                                <input class="form-control" id="inputLastVisit" type="text" placeholder="Enter your last training" value="xx/xx/xxxx" disabled readonly>
                             </div>
                         </div>
                         <!-- Form Row-->
@@ -85,19 +85,19 @@
                             <!-- Form Group (phone number)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="phone_number">Numer telefonu</label>
-                                <input class="form-control" id="phone_number" type="tel" placeholder="Brak" value="{{ player.phone_number }}">
+                                <input class="form-control" id="phone_number" type="tel" placeholder="Brak" value="{{ player.phone_number }}" disabled readonly>
                             </div>
                             <!-- Form Group (email)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="e_mail">E-mail</label>
-                                <input class="form-control" id="e_mail" type="text" name="e_mail" placeholder="Brak" value="{% email_display player.id %}">
+                                <input class="form-control" id="e_mail" type="text" name="e_mail" placeholder="Brak" value="{% email_display player.id %}" disabled readonly>
                             </div>
                         </div>
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (birthday)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="birth_day">Rok urodzenia</label>
-                                <input class="form-control" id="birth_day" type="tel" placeholder="Brak" value="{{player.birth_date | date:'d/m/Y'}}">
+                                <input class="form-control" id="birth_day" type="date" placeholder="Brak" value="{{player.birth_date | date:'d/m/Y'}}" disabled readonly>
                             </div>
                             <!-- Form Group (gender)-->
                             <div class="col-md-6">
@@ -119,12 +119,12 @@
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputCreated">Utworzono</label>
                                 <input class="form-control" id="inputCreated" type="text" placeholder=""
-                                       value="{{player.created | date:'m/d/Y  G:i:s'}}">
+                                       value="{{player.created | date:'m/d/Y  G:i:s'}}" disabled readonly>
                             </div>
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputLastChange">Ostatnia zmiana</label>
                                 <input class="form-control" id="inputLastChange" type="text" placeholder=""
-                                       value="{{player.modified | date:'m/d/Y  G:i:s'}}">
+                                       value="{{player.modified | date:'m/d/Y  G:i:s'}}" disabled readonly>
                             </div>
                         </div>
 
