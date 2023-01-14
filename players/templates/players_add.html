@@ -9,44 +9,52 @@
         <form method="post">
             {% csrf_token %}
 
-            <div style="margin: 25px auto auto;">
-                <input type="text" name="first_name" id="first_name" class="form-control" placeholder="Imię..." aria-label="">
+            <div class="row g-3">
+                <div class="col-md-4" style="margin: 25px auto auto;">
+                    <input type="text" name="first_name" id="first_name" class="form-control form-control-lg" placeholder="Imię..." aria-label="">
+                </div>
+
+                <div class="col-md-4" style="margin: 25px auto auto;">
+                    <input type="text" name="last_name" id="last_name" class="form-control form-control-lg" placeholder="Nazwisko..." aria-label="">
+                </div>
+
+                <div class="col-md-4" style="margin: 25px auto auto;">
+                <div class="form-floating">
+                    <select name="gender" id="gender" class="form-select" aria-label="">
+                        <option selected value="Mężczyzna">Mężczyzna</option>
+                        <option value="Kobieta">Kobieta</option>
+                    </select>
+                    <label for="gender">Płeć</label>
+                </div>
+                </div>
             </div>
 
-            <div style="margin: 25px auto auto;">
-                <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Nazwisko..." aria-label="">
-            </div>
+            <div class="row g-3">
+                <div class="col-md-6">
+                <div class="form-floating" style="margin: 25px auto auto;">
+                    <select name="belt" id="belt" class="form-select" aria-label="">
+                        <option selected value="Biały">Biały</option>
+                        <option value="Niebieski">Niebieski</option>
+                        <option value="Purpurowy">Purpurowy</option>
+                        <option value="Brązowy">Brązowy</option>
+                        <option value="Czarny">Czarny</option>
+                    </select>
+                    <label for="belt">Pas</label>
+                </div>
+                </div>
 
-            <div style="margin: 25px auto auto;">
-                <select name="gender" id="gender" class="form-select" aria-label="">
-                    <option selected>Płeć</option>
-                    <option value="Mężczyzna">Mężczyzna</option>
-                    <option value="Kobieta">Kobieta</option>
-                </select>
-            </div>
-
-
-            <div style="margin: 25px auto auto;">
-                <select name="belt" id="belt" class="form-select" aria-label="">
-                    <option selected>Pas</option>
-                    <option value="Biały">Biały</option>
-                    <option value="Niebieski">Niebieski</option>
-                    <option value="Purpurowy">Purpurowy</option>
-                    <option value="Brązowy">Brązowy</option>
-                    <option value="Czarny">Czarny</option>
-                </select>
-
-            </div>
-
-            <div style="margin: 25px auto auto;">
-                <select name="stripe" id="stripe" class="form-select" aria-label="">
-                    <option selected>Belki</option>
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
+                <div class="col-md-6">
+                <div class="form-floating" style="margin: 25px auto auto;">
+                    <select name="stripe" id="stripe" class="form-select" aria-label="">
+                        <option selected value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                    <label for="stripe">Belki</label>
+                </div>
+                </div>
             </div>
 
             <button type="submit" class="btn btn-outline-success" style="margin-top: 35px;">Dodaj</button>
@@ -61,7 +69,6 @@
             $("#adding_people_toast").toast('show');
         });
         </script>
-
 
         <div style="position: absolute; bottom: 20px; right: 20px;">
             <div id="adding_people_toast" class="toast" role="status" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
