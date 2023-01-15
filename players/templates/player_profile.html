@@ -3,7 +3,6 @@
 {% block body %}
 {% load extras %}
 {% load static %}
-
 <link rel="stylesheet" type="text/css" href="{% static 'css/players/player_profile.css' %}" />
 
 <div class="container-xl px-4 mt-4">
@@ -135,6 +134,75 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-xl-4">
+        </div>
+
+        <div class="col-xl-8">
+            <div class="card mb-4">
+            <div class="card-header">Aktywność</div>
+            <div class="card-body text-end">
+                <p>Łączna ilość treningów: xxx</p>
+                <p>Łączna ilość treningów w bieżącym roku: xxx</p>
+                <hr>
+                <canvas id="lineChart-user-001" style="aspect-ratio: 1/2">
+                <script type="module">
+
+                    import { wykres } from "/static/scripts/charts/player_activity_chart.js";
+
+                    let chart_id = "lineChart-user-001";
+                    {#const labels = {{ context['chart_id_1']['labels'] | safe }};#}
+                    let labels = ["01-2022", "02-2022", "03-2022", "04-2022", "05-2022", "06-2022", "07-2022", "08-2022", "09-2022", "10-2022", "11-2022", "12-2022"];
+                    let dane = [28, 32, 30, 15, 24, 39, 28, 32, 27, 15, 24, 31];
+                    let title = "Ostatnie 12 miesięcy";
+
+                    wykres(chart_id, labels, dane, title);
+
+                </script>
+                </canvas>
+
+                <br>
+                <div class="card-text text-start">
+                <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#Wykres_001_Modal">Powiększ</button>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="Wykres_001_Modal" tabindex="-1" aria-labelledby="Wykres_001_Modal_Label" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-body">
+{#                                <canvas id="lineChart-user-001-modal" style="aspect-ratio: 1/2">#}
+                                <canvas id="lineChart-user-001-modal">
+                                    <script type="module">
+
+                                        import { wykres } from "/static/scripts/charts/player_activity_chart.js";
+
+                                        let chart_id = "lineChart-user-001-modal";
+                                        {#const labels = {{ context['chart_id_1']['labels'] | safe }};#}
+                                        let labels = ["01-2022", "02-2022", "03-2022", "04-2022", "05-2022", "06-2022", "07-2022", "08-2022", "09-2022", "10-2022", "11-2022", "12-2022"];
+                                        let dane = [28, 32, 30, 15, 24, 39, 28, 32, 27, 15, 24, 31];
+                                        let title = "Użytkownik nr {{ player.id }}";
+
+                                        wykres(chart_id, labels, dane, title);
+
+                                    </script>
+                                </canvas>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" style="font-size: 14px; width: 140px; ">Zamknij</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal (Koniec) -->
+
+            </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 
 {% endblock %}
