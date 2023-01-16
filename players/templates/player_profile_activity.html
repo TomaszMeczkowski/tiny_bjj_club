@@ -1,0 +1,245 @@
+{% extends "inner_layout.html" %}
+
+{% block body %}
+{% load extras %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/players/player_profile.css' %}" />
+
+<div class="container-xl px-4 mt-4">
+    <!-- Account page navigation-->
+    <nav class="nav nav-borders">
+        <a class="nav-link ms-0" href="{% url 'players:player_profile' player.id %}">Profil</a>
+        <a class="nav-link" href="{% url 'players:player_profile_biling' player.id %}">Płatności</a>
+        <a class="nav-link active" href="{% url 'players:player_profile_activity' player.id %}">Aktywność</a>
+        <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-profile-security-page">Bezpieczeństwo</a>
+        <a class="nav-link" href="#"  target="__blank">Ankiety</a>
+    </nav>
+
+    <hr class="mt-0 mb-4">
+
+    <div class="row">
+        <div class="col-xl-3">
+            <!-- Profile picture card-->
+            <div class="card mb-4 mb-xl-0">
+                <div class="card-header">{{player.first_name}} {{player.last_name}}</div>
+                <div class="card-body text-center">
+
+                    <!-- Profile picture image-->
+                    {% if player.gender == 'Mężczyzna'%}
+                    <img class="img-account-profile rounded-circle mb-2" src="{% static 'images/players/profile_photo/male.png' %}" alt="">
+                    {% else %}
+                    <img class="img-account-profile rounded-circle mb-2" src="{% static 'images/players/profile_photo/female.png' %}" alt="">
+                    {% endif %}
+
+                    <!-- Profile belt image-->
+                    <img src= "{% belt_png player.belt player.stripe %}" alt='' style="width: 100px; margin-left: 10px;"/>
+
+                    <!-- Profile belt text info-->
+                    <div class="small font-italic text-muted mb-2">Pas: {{player.belt}}, {{player.stripe}} belki</div>
+
+
+                    <div class="small font-italic text-muted mb-4">Status zawodnika:
+                        {% if player.active %}
+                            <b style="color: green">Aktywny</b>
+                        {% else %}
+                            <b style="color: red">Nieaktywny</b>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-9">
+            <div class="card mb-4">
+            <div class="card-header">Aktywność</div>
+            <div class="card-body text-end">
+                <p>Łączna ilość treningów: xxx</p>
+                <p>Łączna ilość treningów w bieżącym roku: xxx</p>
+                <p>Pierwszy trening: xx/xx/xxxx</p>
+                <p>Nominacja na niebieski pas: xx/xxxx</p>
+                <p>Nominacja na purpurowy pas: xx/xxxx</p>
+                <hr>
+                <canvas id="lineChart-user-000" style="aspect-ratio: 1/2">
+                <script type="module">
+
+                    import { wykres } from "/static/scripts/charts/player_activity_chart.js";
+
+                    let chart_id = "lineChart-user-000";
+                    {#const labels = {{ context['chart_id_1']['labels'] | safe }};#}
+                    let labels = ["01-2022", "02-2022", "03-2022", "04-2022", "05-2022", "06-2022", "07-2022", "08-2022", "09-2022", "10-2022", "11-2022", "12-2022"];
+                    let dane = [28, 32, 30, 15, 24, 39, 28, 32, 27, 15, 24, 31];
+                    let title = "Ostatnie 12 miesięcy";
+
+                    wykres(chart_id, labels, dane, title);
+
+                </script>
+                </canvas>
+
+                <br>
+                <div class="card-text text-start">
+                <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#Wykres_000_Modal">Powiększ</button>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="Wykres_000_Modal" tabindex="-1" aria-labelledby="Wykres_000_Modal_Label" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <canvas id="lineChart-user-000-modal">
+                                    <script type="module">
+
+                                        import { wykres } from "/static/scripts/charts/player_activity_chart.js";
+
+                                        let chart_id = "lineChart-user-000-modal";
+                                        {#const labels = {{ context['chart_id_1']['labels'] | safe }};#}
+                                        let labels = ["01-2022", "02-2022", "03-2022", "04-2022", "05-2022", "06-2022", "07-2022", "08-2022", "09-2022", "10-2022", "11-2022", "12-2022"];
+                                        let dane = [28, 32, 30, 15, 24, 39, 28, 32, 27, 15, 24, 31];
+                                        let title = "Użytkownik nr {{ player.id }}";
+
+                                        wykres(chart_id, labels, dane, title);
+
+                                    </script>
+                                </canvas>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" style="font-size: 14px; width: 140px; ">Zamknij</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal (Koniec) -->
+
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="card mb-4">
+            <div class="card-header">Aktywność - 2021</div>
+            <div class="card-body text-end">
+                <p>Łączna ilość treningów: xxx</p>
+                <hr>
+                <canvas id="lineChart-user-001" style="aspect-ratio: 1/2">
+                <script type="module">
+
+                    import { wykres } from "/static/scripts/charts/player_activity_chart.js";
+
+                    let chart_id = "lineChart-user-001";
+                    {#const labels = {{ context['chart_id_1']['labels'] | safe }};#}
+                    let labels = ["01-2022", "02-2022", "03-2022", "04-2022", "05-2022", "06-2022", "07-2022", "08-2022", "09-2022", "10-2022", "11-2022", "12-2022"];
+                    let dane = [28, 32, 30, 15, 24, 39, 28, 32, 27, 15, 24, 31];
+                    let title = "Ostatnie 12 miesięcy";
+
+                    wykres(chart_id, labels, dane, title);
+
+                </script>
+                </canvas>
+
+                <br>
+                <div class="card-text text-start">
+                <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#Wykres_001_Modal">Powiększ</button>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="Wykres_001_Modal" tabindex="-1" aria-labelledby="Wykres_001_Modal_Label" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-body">
+{#                                <canvas id="lineChart-user-001-modal" style="aspect-ratio: 1/2">#}
+                                <canvas id="lineChart-user-001-modal">
+                                    <script type="module">
+
+                                        import { wykres } from "/static/scripts/charts/player_activity_chart.js";
+
+                                        let chart_id = "lineChart-user-001-modal";
+                                        {#const labels = {{ context['chart_id_1']['labels'] | safe }};#}
+                                        let labels = ["01-2022", "02-2022", "03-2022", "04-2022", "05-2022", "06-2022", "07-2022", "08-2022", "09-2022", "10-2022", "11-2022", "12-2022"];
+                                        let dane = [28, 32, 30, 15, 24, 39, 28, 32, 27, 15, 24, 31];
+                                        let title = "Użytkownik nr {{ player.id }}";
+
+                                        wykres(chart_id, labels, dane, title);
+
+                                    </script>
+                                </canvas>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" style="font-size: 14px; width: 140px; ">Zamknij</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal (Koniec) -->
+
+            </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6">
+            <div class="card mb-4">
+            <div class="card-header">Aktywność - 2020</div>
+            <div class="card-body text-end">
+                <p>Łączna ilość treningów: xxx</p>
+                <hr>
+                <canvas id="lineChart-user-002" style="aspect-ratio: 1/2">
+                <script type="module">
+
+                    import { wykres } from "/static/scripts/charts/player_activity_chart.js";
+
+                    let chart_id = "lineChart-user-002";
+                    {#const labels = {{ context['chart_id_1']['labels'] | safe }};#}
+                    let labels = ["01-2022", "02-2022", "03-2022", "04-2022", "05-2022", "06-2022", "07-2022", "08-2022", "09-2022", "10-2022", "11-2022", "12-2022"];
+                    let dane = [28, 32, 30, 15, 24, 39, 28, 32, 27, 15, 24, 31];
+                    let title = "Ostatnie 12 miesięcy";
+
+                    wykres(chart_id, labels, dane, title);
+
+                </script>
+                </canvas>
+
+                <br>
+                <div class="card-text text-start">
+                <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#Wykres_002_Modal">Powiększ</button>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="Wykres_002_Modal" tabindex="-1" aria-labelledby="Wykres_002_Modal_Label" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-body">
+{#                                <canvas id="lineChart-user-001-modal" style="aspect-ratio: 1/2">#}
+                                <canvas id="lineChart-user-002-modal">
+                                    <script type="module">
+
+                                        import { wykres } from "/static/scripts/charts/player_activity_chart.js";
+
+                                        let chart_id = "lineChart-user-002-modal";
+                                        {#const labels = {{ context['chart_id_1']['labels'] | safe }};#}
+                                        let labels = ["01-2022", "02-2022", "03-2022", "04-2022", "05-2022", "06-2022", "07-2022", "08-2022", "09-2022", "10-2022", "11-2022", "12-2022"];
+                                        let dane = [28, 32, 30, 15, 24, 39, 28, 32, 27, 15, 24, 31];
+                                        let title = "Użytkownik nr {{ player.id }}";
+
+                                        wykres(chart_id, labels, dane, title);
+
+                                    </script>
+                                </canvas>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" style="font-size: 14px; width: 140px; ">Zamknij</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal (Koniec) -->
+
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}
