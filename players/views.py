@@ -97,3 +97,9 @@ def player_profile_biling(request, player_id):
     player = Player.objects.get(pk=player_id)
     context = {"player": player}
     return render(request, "player_profile_biling.html", context)
+
+
+def player_profile_activity(request, player_id):
+    player = Player.objects.get(pk=player_id)
+    context = {"player": player}
+    return render(request, "player_profile_activity.html", context)
