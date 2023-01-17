@@ -6,38 +6,56 @@ from datetime import datetime
 
 # Create your views here.
 
+# TO DO:  rearange local and global variables in players method (keep pagination with players list/search funcionality)
+query_players = None
+
 
 def players(request):
-    players = Player.objects.all()
 
-    # Very bad idea but working for some cases (work it out later)
-    first_names = []
-    last_names = []
-    for i in players:
-        first_names.append(i.first_name)
-        last_names.append(i.last_name)
+    global query_players
+    players = query_players
+
+    if players is None:
+        query_players = Player.objects.all()
+        players = Player.objects.all()
+
+
+    pagination_div = 20
 
     if request.method == "POST":
+        # Bad idea but working for some cases (fix it out later)
+        first_names = []
+        last_names = []
+        players = Player.objects.all()
+        for i in players:
+            first_names.append(i.first_name)
+            last_names.append(i.last_name)
+
         search_bar = request.POST.get("searchbar").capitalize()
 
         if search_bar in ['Biały', "Niebieski", "Purpurowy", "Brązowy", "Czarny"]:
             players = players.filter(belt=search_bar)
+            query_players = players
 
         elif search_bar in first_names:
             players = players.filter(first_name=search_bar)
+            query_players = players
 
         elif search_bar in last_names:
             players = players.filter(last_name=search_bar)
+            query_players = players
 
         # Case for zero output search
         elif search_bar != "":
             players = players.filter(first_name=search_bar)
+            query_players = players
 
-    players = Paginator(players, 20)
+    players = Paginator(players, pagination_div)
     current_page = request.GET.get('page')
     players = players.get_page(current_page)
 
     context = {"players": players,
+               # "query": query_param
                }
 
     return render(request, "players_list.html", context)

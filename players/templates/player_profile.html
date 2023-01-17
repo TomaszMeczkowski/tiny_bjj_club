@@ -74,11 +74,11 @@
                         <div class="row gx-3 mb-3">
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputFirstVisit">Pierwszy trening</label>
-                                <input class="form-control" id="inputFirstVisit" type="text" placeholder="Enter your first training" value="xx/xx/xxxx" disabled readonly>
+                                <input class="form-control" id="inputFirstVisit" type="date" placeholder="Enter your first training" value="{{ player.first_training | date:'Y-m-d' }}" disabled readonly>
                             </div>
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputLastVisit">Ostatni trening</label>
-                                <input class="form-control" id="inputLastVisit" type="text" placeholder="Enter your last training" value="xx/xx/xxxx" disabled readonly>
+                                <input class="form-control" id="inputLastVisit" type="date" placeholder="Enter your last training" value="{{ player.last_training | date:'Y-m-d' }}" disabled readonly>
                             </div>
                         </div>
                         <!-- Form Row-->
@@ -91,19 +91,19 @@
                             <!-- Form Group (email)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="e_mail">E-mail</label>
-                                <input class="form-control" id="e_mail" type="text" name="e_mail" placeholder="Brak" value="{% email_display player.id %}" disabled readonly>
+                                <input class="form-control" id="e_mail" type="email" name="e_mail" placeholder="Brak" value="{% email_display player.id %}" disabled readonly>
                             </div>
                         </div>
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (birthday)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="birth_day">Rok urodzenia</label>
-                                <input class="form-control" id="birth_day" type="date" placeholder="Brak" value="{{player.birth_date | date:'d/m/Y'}}" disabled readonly>
+                                <input class="form-control" id="birth_day" type="date" value="{{ player.birth_date | date:'Y-m-d' }}" disabled readonly>
                             </div>
                             <!-- Form Group (gender)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="gender">Płeć</label>
-                                <select class="form-select" id="gender" name="gender" aria-label="Płeć" style="height: 48px; color: grey">
+                                <select class="form-select" id="gender" name="gender" aria-label="Płeć" style="height: 48px; color: grey" disabled readonly>
                                     {% if player.gender == "Mężczyzna" %}
                                         <option selected>Mężczyzna</option>
                                         <option value="Kobieta">Kobieta</option>
@@ -145,8 +145,8 @@
             <div class="card mb-4">
             <div class="card-header">Aktywność</div>
             <div class="card-body text-end">
-                <p>Łączna ilość treningów: xxx</p>
-                <p>Łączna ilość treningów w bieżącym roku: xxx</p>
+                <p>Ilość wszystkich treningów: {{ player.total_entries }}</p>
+                <p>Ilość treningów w bieżącym roku: xxx</p>
                 <hr>
                 <canvas id="lineChart-user-001" style="aspect-ratio: 1/2">
                 <script type="module">

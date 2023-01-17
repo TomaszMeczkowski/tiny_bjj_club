@@ -23,7 +23,7 @@
                 {% csrf_token %}
 
                     <div class="col-auto">
-                        <input class="form-control" type="search" id="searchbar" name="searchbar" placeholder="Szukaj..." aria-label="">
+                        <input class="form-control" type="search" id="searchbar" name="searchbar" placeholder="Szukaj..." aria-label="" value="{{ query }}">
                     </div>
 
                     <div class="col-auto">
