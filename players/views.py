@@ -34,13 +34,12 @@ def players(request):
             players = players.filter(first_name=search_bar)
 
     players = Paginator(players, 20)
-    count_players = players.count
     current_page = request.GET.get('page')
     players = players.get_page(current_page)
 
-    context = {"count_players": count_players,
-               "players": players,
+    context = {"players": players,
                }
+
     return render(request, "players_list.html", context)
 
 
