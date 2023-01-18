@@ -43,10 +43,13 @@ class Player(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     email = models.EmailField(null=True, blank=True)
+    phone_number = models.CharField(max_length=20, blank=True)
     active = models.BooleanField(default=False)
     subscription_type = models.CharField(max_length=30, choices=SubscriptionType.choices, default=SubscriptionType.ONE,
                                          blank=True)
-    phone_number = models.CharField(max_length=20, blank=True)
+    recent_left_entries = models.PositiveIntegerField(default=0)
+    total_entries = models.PositiveIntegerField(default=0)
+    sub_month = models.DateField(null=True, blank=True)
 
     class Meta:
         ordering = ['id']

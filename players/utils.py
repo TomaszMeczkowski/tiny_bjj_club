@@ -12,32 +12,27 @@ def create_fake_players(n=1):
         choice_input = choice(gender_index)
 
         if choice_input == "M":
-            player = Player(
-                first_name=fake.first_name_male(),
-                last_name=fake.last_name_male(),
-                belt=choice(belts),
-                stripe=randint(0, 4),
-                gender="Mężczyzna",
-                birth_date=fake.date_of_birth(),
-                email=fake.free_email(),
-                active=randint(0, 1),
-                phone_number=fake.phone_number()
-            )
-            player.save()
+            gender = "Mężczyzna"
+            first_name = fake.first_name_male()
+            last_name = fake.last_name_male()
 
         else:
-            player = Player(
-                first_name=fake.first_name_female(),
-                last_name=fake.last_name_female(),
-                belt=choice(belts),
-                stripe=randint(0, 4),
-                gender="Kobieta",
-                birth_date=fake.date_of_birth(),
-                email=fake.free_email(),
-                active=randint(0, 1),
-                phone_number=fake.phone_number()
-            )
-            player.save()
+            gender = "Kobieta"
+            first_name = fake.first_name_female()
+            last_name = fake.last_name_female()
+
+        player = Player(
+            first_name=first_name,
+            last_name=last_name,
+            belt=choice(belts),
+            stripe=randint(0, 4),
+            gender=gender,
+            birth_date=fake.date_of_birth(),
+            email=fake.free_email(),
+            active=randint(0, 1),
+            phone_number=fake.phone_number(),
+        )
+        player.save()
 
 
 def delete_last_players(n=1):
