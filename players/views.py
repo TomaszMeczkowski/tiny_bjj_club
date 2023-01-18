@@ -14,14 +14,22 @@ def players(request):
 
     global query_players
     players = query_players
+    query_on = request.GET.get('page')
 
-    if players is None:
+    # Case for restart list with search button/field
+    if request.method == "POST":
+        get_query_item = request.POST.get("searchbar").capitalize()
+        if get_query_item == "" or get_query_item == " ":
+            query_players = None
+
+    # Case for entering list or restart (show all entries)
+    if players is None or query_on is None:
         query_players = Player.objects.all()
         players = Player.objects.all()
 
-
     pagination_div = 20
 
+    # Basic cases for query results
     if request.method == "POST":
         # Bad idea but working for some cases (fix it out later)
         first_names = []
