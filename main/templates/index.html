@@ -7,53 +7,68 @@
     <div class="container-fluid py-5">
         <h1 class="display-6 fw-bold">BJJ Club app</h1>
         <p class="col-md-8 fs-4">Aplikacja organizująca pracę klubu sportowego, zajmującego się brazylijskim jiu jitsu</p>
-        <p><a href="https://www.djangoproject.com/" class="btn btn-outline-success">Dokumentacja Django</a></p>
-    </div>
-</div>
-
-
-{% if message != "" %}
-<script>
-        $(document).ready(function() {
-            $("#id_finder_modal").modal('show');
-        });
-</script>
-
-<div>
-    <div class="modal fade" id="id_finder_modal" tabindex="-1" aria-labelledby="id_finder_modal_label" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="id_finder_modal_label">Panel logowania</h1>
-                </div>
-
-                <div class="modal-body" style="margin-top: 20px; margin-bottom: 20px;">
-
-                    <div style="text-align: center;">
-
-                        {% if message == "zalogowany" %}
-                        <h3>Zostałeś zalogowany</h3>
-                        {% endif %}
-
-                        {% if message == "wylogowany" %}
-                        <h3>Zostałeś wylogowany</h3>
-                        {% endif %}
-
-                    </div>
-
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="custom-grey" style="width: 100px;" data-bs-dismiss="modal">Zamknij</button>
-                </div>
-
+        <br>
+        <h3>Wykorzystana dokumentacja</h3>
+        <div class="row">
+            <div class="col-auto">
+                <a href="https://www.djangoproject.com/" class="btn btn-outline-primary">Django 4+</a>
+            </div>
+            <div class="col-auto">
+                <a href="https://getbootstrap.com/docs/5.2/getting-started/introduction/" class="btn btn-outline-primary">Bootstrap 5+</a>
+            </div>
+            <div class="col-auto">
+                <a href="https://docs.python.org/3.10/" class="btn btn-outline-primary">Python 3.10</a>
+            </div>
+            <div class="col-auto">
+                <a href="https://www.chartjs.org/docs/4.2.0/" class="btn btn-outline-primary">Chart JS 4.2</a>
             </div>
         </div>
     </div>
 </div>
 
-{% endif %}
+
+{#{% if message != "" %}#}
+{#<script>#}
+{#        $(document).ready(function() {#}
+{#            $("#id_finder_modal").modal('show');#}
+{#        });#}
+{#</script>#}
+
+{#<div>#}
+{#    <div class="modal fade" id="id_finder_modal" tabindex="-1" aria-labelledby="id_finder_modal_label" aria-hidden="true">#}
+{#        <div class="modal-dialog modal-dialog-centered">#}
+{#            <div class="modal-content">#}
+{##}
+{#                <div class="modal-header">#}
+{#                    <h1 class="modal-title fs-5" id="id_finder_modal_label">Panel logowania</h1>#}
+{#                </div>#}
+{##}
+{#                <div class="modal-body" style="margin-top: 20px; margin-bottom: 20px;">#}
+{##}
+{#                    <div style="text-align: center;">#}
+{##}
+{#                        {% if message == "zalogowany" %}#}
+{#                        <h3>Zostałeś zalogowany</h3>#}
+{#                        {% endif %}#}
+{##}
+{#                        {% if message == "wylogowany" %}#}
+{#                        <h3>Zostałeś wylogowany</h3>#}
+{#                        {% endif %}#}
+{##}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{##}
+{#                <div class="modal-footer">#}
+{#                    <button type="button" class="custom-grey" style="width: 100px;" data-bs-dismiss="modal">Zamknij</button>#}
+{#                </div>#}
+{##}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+{##}
+{#{% endif %}#}
 
 
 
