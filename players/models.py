@@ -36,6 +36,7 @@ class Player(models.Model):
     last_name = models.CharField(max_length=100)
     belt = models.CharField(max_length=30, choices=Belts.choices, default=Belts.WHITE)
     stripe = models.CharField(max_length=1, choices=Stripes.choices, default=Stripes.ZERO)
+
     gender = models.CharField(max_length=10, choices=Gender.choices, default=Gender.Male, blank=True)
     birth_date = models.DateField(blank=True, null=True)
     first_training = models.DateField(blank=True, null=True)
@@ -44,6 +45,7 @@ class Player(models.Model):
     modified = models.DateTimeField(auto_now=True)
     email = models.EmailField(null=True, blank=True)
     phone_number = models.CharField(max_length=20, blank=True)
+
     active = models.BooleanField(default=False)
     subscription_type = models.CharField(max_length=30, choices=SubscriptionType.choices, default=SubscriptionType.ONE,
                                          blank=True)
@@ -56,3 +58,37 @@ class Player(models.Model):
 
     def __str__(self):
         return f"{self.id}. {self.first_name} {self.last_name}"
+
+
+class PersonalInfo(models.Model):
+
+    class Gender(models.TextChoices):
+        Male = "Mężczyzna", "Mężczyzna"
+        Female = "Kobieta", "Kobieta"
+
+    gender = models.CharField(max_length=10, choices=Gender.choices, default=Gender.Male, blank=True)
+    birth_date = models.DateField(blank=True, null=True)
+    first_training = models.DateField(blank=True, null=True)
+    last_training = models.DateField(blank=True, null=True)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+    email = models.EmailField(null=True, blank=True)
+    phone_number = models.CharField(max_length=20, blank=True)
+
+
+class MembershipFee(models.Model):
+
+    class SubscriptionType(models.TextChoices):
+        ONE = "1 Wejście", "1 Wejście"
+        FOUR = "4 Wejścia", "4 Wejścia"
+        EIGHT = "8 Wejść", "8 Wejść"
+        FIFTEEN = "15 Wejść", "15 Wejść"
+        OPEN = "OPEN", "OPEN"
+        KIDS = "Dzieci i młodzież", "Dzieci i młodzież"
+
+    active = models.BooleanField(default=False)
+    subscription_type = models.CharField(max_length=30, choices=SubscriptionType.choices, default=SubscriptionType.ONE,
+                                         blank=True)
+    recent_left_entries = models.PositiveIntegerField(default=0)
+    total_entries = models.PositiveIntegerField(default=0)
+    sub_month = models.DateField(null=True, blank=True)
