@@ -24,7 +24,7 @@
                 <div class="card-body text-center">
 
                     <!-- Profile picture image-->
-                    {% if player.gender == 'Mężczyzna'%}
+                    {% if player.personalinfo.gender == 'Mężczyzna'%}
                     <img class="img-account-profile rounded-circle mb-2" src="{% static 'images/players/profile_photo/male.png' %}" alt="">
                     {% else %}
                     <img class="img-account-profile rounded-circle mb-2" src="{% static 'images/players/profile_photo/female.png' %}" alt="">
@@ -38,7 +38,7 @@
 
 
                     <div class="small font-italic text-muted mb-4">Status zawodnika:
-                        {% if player.active %}
+                        {% if player.membershipfee.active %}
                             <b style="color: green">Aktywny</b>
                         {% else %}
                             <b style="color: red">Nieaktywny</b>
@@ -74,11 +74,11 @@
                         <div class="row gx-3 mb-3">
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputFirstVisit">Pierwszy trening</label>
-                                <input class="form-control" id="inputFirstVisit" type="date" placeholder="Enter your first training" value="{{ player.first_training | date:'Y-m-d' }}" disabled readonly>
+                                <input class="form-control" id="inputFirstVisit" type="date" placeholder="Enter your first training" value="{{ player.personalinfo.first_training | date:'Y-m-d' }}" disabled readonly>
                             </div>
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputLastVisit">Ostatni trening</label>
-                                <input class="form-control" id="inputLastVisit" type="date" placeholder="Enter your last training" value="{{ player.last_training | date:'Y-m-d' }}" disabled readonly>
+                                <input class="form-control" id="inputLastVisit" type="date" placeholder="Enter your last training" value="{{ player.personalinfo.last_training | date:'Y-m-d' }}" disabled readonly>
                             </div>
                         </div>
                         <!-- Form Row-->
@@ -86,25 +86,26 @@
                             <!-- Form Group (phone number)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="phone_number">Numer telefonu</label>
-                                <input class="form-control" id="phone_number" type="tel" placeholder="Brak" value="{{ player.phone_number }}" disabled readonly>
+                                <input class="form-control" id="phone_number" type="tel" placeholder="Brak" value="{{ player.personalinfo.phone_number }}" disabled readonly>
                             </div>
                             <!-- Form Group (email)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="e_mail">E-mail</label>
                                 <input class="form-control" id="e_mail" type="email" name="e_mail" placeholder="Brak" value="{% email_display player.id %}" disabled readonly>
+{#                                <input class="form-control" id="e_mail" type="email" name="e_mail" placeholder="Brak" value="x" disabled readonly>#}
                             </div>
                         </div>
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (birthday)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="birth_day">Rok urodzenia</label>
-                                <input class="form-control" id="birth_day" type="date" value="{{ player.birth_date | date:'Y-m-d' }}" disabled readonly>
+                                <input class="form-control" id="birth_day" type="date" value="{{ player.personalinfo.birth_date | date:'Y-m-d' }}" disabled readonly>
                             </div>
                             <!-- Form Group (gender)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="gender">Płeć</label>
                                 <select class="form-select" id="gender" name="gender" aria-label="Płeć" style="height: 48px; color: grey" disabled readonly>
-                                    {% if player.gender == "Mężczyzna" %}
+                                    {% if player.personalinfo.gender == "Mężczyzna" %}
                                         <option selected>Mężczyzna</option>
                                         <option value="Kobieta">Kobieta</option>
                                     {% else %}
@@ -120,12 +121,12 @@
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputCreated">Utworzono</label>
                                 <input class="form-control" id="inputCreated" type="text" placeholder=""
-                                       value="{{player.created | date:'m/d/Y  G:i:s'}}" disabled readonly>
+                                       value="{{player.personalinfo.created | date:'m/d/Y  G:i:s'}}" disabled readonly>
                             </div>
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputLastChange">Ostatnia zmiana</label>
                                 <input class="form-control" id="inputLastChange" type="text" placeholder=""
-                                       value="{{player.modified | date:'m/d/Y  G:i:s'}}" disabled readonly>
+                                       value="{{player.personalinfo.modified | date:'m/d/Y  G:i:s'}}" disabled readonly>
                             </div>
                         </div>
 

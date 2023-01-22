@@ -101,7 +101,7 @@ def players_add(request):
 
 
 def player_profile(request, player_id):
-    player = Player.objects.get(pk=player_id)
+    player = Player.objects.select_related().get(pk=player_id)
 
     if request.method == "POST":
         first_name = request.POST.get("first_name").capitalize()

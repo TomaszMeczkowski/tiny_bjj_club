@@ -40,7 +40,7 @@ def active_player_text(user_id):
 @register.simple_tag
 def email_display(user_id):
     player = Player.objects.get(pk=user_id)
-    email = player.email
+    email = player.personalinfo.email
     if email:
         return email
     else:
