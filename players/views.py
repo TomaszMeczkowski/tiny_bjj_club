@@ -24,8 +24,8 @@ def players(request):
 
     # Case for entering list or restart (show all entries)
     if players is None or query_on is None:
-        query_players = Player.objects.all()
-        players = Player.objects.all()
+        query_players = Player.objects.select_related().all()
+        players = Player.objects.select_related().all()
 
     pagination_div = 20
 
@@ -34,7 +34,7 @@ def players(request):
         # Bad idea but working for some cases (fix it out later)
         first_names = []
         last_names = []
-        players = Player.objects.all()
+        players = Player.objects.select_related().all()
         for i in players:
             first_names.append(i.first_name)
             last_names.append(i.last_name)
