@@ -79,10 +79,6 @@
                         {% load extras %}
                         {% for player in players %}
 
-                            <p>AAA</p>
-                            <p>{{ player.first_name }}</p>
-                            <p>{{ player.personalinfo.active }}</p>
-                            <p>{{ player.PersonaInfo.active }}</p>
                         <tr>
                             <th scope="row" class="ps-4">
                                 <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck0" /><label class="form-check-label" for="contacusercheck0"></label></div>
@@ -92,7 +88,7 @@
                             </td>
                             <td><img src="{% belt_png player.belt player.stripe %}" alt="" style="width: 100px; margin-left: 10px;"/></td>
 
-                            {% if player.active %}
+                            {% if player.membershipfee.active %}
                             <td><span class="badge badge-soft-success mb-0">Aktywny</span></td>
                             {% else %}
                             <td><span class="badge badge-soft-danger mb-0">Nieaktywny</span></td>
