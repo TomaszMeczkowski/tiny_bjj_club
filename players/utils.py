@@ -1,4 +1,4 @@
-from .models import Player
+from .models import Player, PersonalInfo, MembershipFee
 from faker import Faker
 from random import choice, randint
 
@@ -26,13 +26,23 @@ def create_fake_players(n=1):
             last_name=last_name,
             belt=choice(belts),
             stripe=randint(0, 4),
-            gender=gender,
-            birth_date=fake.date_of_birth(),
-            email=fake.free_email(),
-            active=randint(0, 1),
-            phone_number=fake.phone_number(),
         )
         player.save()
+
+        player = Player.objects.last().id
+
+        player_info = PersonalInfo(player,
+                                   gender=gender,
+                                   birth_date=fake.date_of_birth(),
+                                   email=fake.free_email(),
+                                   phone_number=fake.phone_number(),
+                                   )
+        player_info.save()
+
+        player_sub = MembershipFee(player,
+                                   active=randint(0, 1),
+                                   )
+        player_sub.save()
 
 
 def delete_last_players(n=1):
@@ -44,3 +54,4 @@ def delete_last_players(n=1):
 def delete_all_players():
     players_to_bin = Player.objects.all()
     players_to_bin.delete()
+
