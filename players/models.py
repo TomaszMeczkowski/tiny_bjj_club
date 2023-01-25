@@ -64,5 +64,10 @@ class MembershipFee(models.Model):
     subscription_type = models.CharField(max_length=30, choices=SubscriptionType.choices, default=SubscriptionType.ONE,
                                          blank=True)
     recent_left_entries = models.PositiveIntegerField(default=0)
-    total_entries = models.PositiveIntegerField(default=0)
     sub_month = models.DateField(null=True, blank=True)
+
+
+class Stat(models.Model):
+
+    user = models.OneToOneField(Player, on_delete=models.CASCADE, primary_key=True)
+    total_entries = models.PositiveIntegerField(default=0)
