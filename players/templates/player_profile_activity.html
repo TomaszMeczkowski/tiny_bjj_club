@@ -18,9 +18,9 @@
     <hr class="mt-0 mb-4">
 
     <div class="row">
-        <div class="col-xl-3">
+        <div class="col-xl-4">
             <!-- Profile picture card-->
-            <div class="card mb-4 mb-xl-0">
+            <div class="card mb-4 mb-xl-4">
                 <div class="card-header">{{player.first_name}} {{player.last_name}}</div>
                 <div class="card-body text-center">
 
@@ -48,9 +48,32 @@
 
                 </div>
             </div>
+
+            <div class="card mb-4 mb-xl-4">
+                    <div class="card-header">Notatki / Osiągnięcia</div>
+                    <div class="card-body text-center">
+
+                        <!-- Profile belt image-->
+                        <img src= "{% belt_png player.belt player.stripe %}" alt='' style="width: 100px; margin-left: 10px;"/>
+
+                        <!-- Profile belt text info-->
+                        <div class="small font-italic text-muted mb-2">Pas: {{player.belt}}, {{player.stripe}} belki</div>
+
+
+                        <div class="small font-italic text-muted mb-4">Status zawodnika:
+                            {% if player.membershipfee.active %}
+                                <b style="color: green">Aktywny</b>
+                            {% else %}
+                                <b style="color: red">Nieaktywny</b>
+                            {% endif %}
+                        </div>
+
+                    </div>
+            </div>
+
         </div>
 
-        <div class="col-xl-9">
+        <div class="col-xl-8">
             <div class="card mb-4">
             <div class="card-header">Aktywność</div>
             <div class="card-body text-end">
@@ -114,6 +137,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Single block of data (with both year data variation) -->
+    <h3 style="margin-bottom: 25px; margin-top: 25px;">2021 - 2020</h3>
 
     <div class="row">
         <div class="col-xl-6">
@@ -239,6 +265,7 @@
         </div>
     </div>
 
+    <!-- End of single block of data -->
 
 </div>
 
