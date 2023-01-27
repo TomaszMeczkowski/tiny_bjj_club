@@ -1,4 +1,4 @@
-from .models import Player, PersonalInfo, MembershipFee
+from .models import Player, PersonalInfo, MembershipFee, Stat
 from faker import Faker
 from random import choice, randint
 
@@ -43,6 +43,11 @@ def create_fake_players(n=1):
                                    active=randint(0, 1),
                                    )
         player_sub.save()
+
+        player_stat = Stat(player,
+                           total_entries=randint(65, 499)
+                           )
+        player_stat.save()
 
 
 def delete_last_players(n=1):
