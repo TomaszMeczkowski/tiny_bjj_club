@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     "django_extensions",
 
     "main.apps.MainConfig",
-    "players.apps.PlayersConfig",
+    "players.apps.PlayersConfig"
+    # "pytest-django",
 ]
 
 MIDDLEWARE = [
